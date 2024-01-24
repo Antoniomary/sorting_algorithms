@@ -8,7 +8,7 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	size_t i, count_size;
+	size_t i, j, count_size;
 	int k, *count, *array_temp;
 
 	if (!array || size < 2)
@@ -25,7 +25,7 @@ void counting_sort(int *array, size_t size)
 	for (i = 0; i < count_size; ++i)
 		count[i] = 0;
 	/* get the frequency of the elements in array */
-	for (i = 0; i < count_size; ++i)
+	for (i = 0; i < size; ++i)
 		count[array[i]] += 1;
 
 	/* turn count to track the index */
@@ -42,8 +42,8 @@ void counting_sort(int *array, size_t size)
 	}
 
 	/* sort elements into their right position in a temp array */
-	for ( ; i != 0; --i)
-		array_temp[count[i - 1] - 1] = i - 1;
+	for (j = size; j != 0; --j)
+		array_temp[--count[array[j - 1]]] = array[j - 1];
 	/* copy sorted to the original array */
 	for (i = 0; i < size; ++i)
 		array[i] = array_temp[i];
