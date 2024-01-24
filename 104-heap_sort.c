@@ -73,7 +73,7 @@ void heapify(int *array, size_t count, size_t size)
 {
 	size_t i;
 
-	for (i = (count - 1) / 2; i >= 0 && i < count; --i)
+	for (i = (count - 1) / 2; i < count; --i)
 		sift_down(array, count, size, i);
 }
 
