@@ -12,7 +12,7 @@ void zero_initializer(int *array, size_t size);
  */
 void radix_sort(int *array, size_t size)
 {
-	size_t i, d = 0, place_value = 1;
+	size_t i, j, d = 0, place_value = 1;
 	int max, temp, count[10], *array_temp;
 
 	if (!array || size < 2)
@@ -42,11 +42,11 @@ void radix_sort(int *array, size_t size)
 		for (i = 1; i < 10; ++i)
 			count[i] = count[i - 1] + count[i];
 		/* sort the array according to order of magnitude of LSD */
-		for ( ; i != 0; --i)
+		for (j = size; j != 0; --j)
 		{
-			temp = array[i - 1] / place_value % 10;
+			temp = array[j - 1] / place_value % 10;
 			count[temp] -= 1;
-			array_temp[count[temp]] = array[i - 1];
+			array_temp[count[temp]] = array[j - 1];
 		}
 		/* copy to original array */
 		for (i = 0; i < size; ++i)
