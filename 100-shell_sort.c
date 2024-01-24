@@ -22,24 +22,8 @@ void shell_sort(int *array, size_t size)
 	for ( ; gap >= 1; gap = (gap - 1) / 3)
 	{
 		for (i = gap; i < size; ++i)
-			for (j = i - gap; j >= 0 && array[j + gap] < array[j]; j -= gap)
-			{
-				/**
-				 * The commented out code works but the one used brings outs the
-				 * truth underneath the hood.
-				 * The if clause would not be necessary if the data type used were
-				 * signed. Since unsigned is used, wrapping around needs to be handled.
-				 * I did this for educational purposes to help anyone who views this code.
-				 * To get the idea, comment out the if clause.
-				 */
-				swap(&array[j], &array[j + gap]);
-				if (j - gap > 0 && j - gap > gap)
-					break;
-				/**
-				 * for (j = i; j >= gap && array[j] < array[j - gap]; j -= gap)
-				 * swap(&array[j], &array[j - gap]);
-				 */
-			}
+			for (j = i; j >= gap && array[j] < array[j - gap]; j -= gap)
+				swap(&array[j], &array[j - gap]);
 		print_array(array, size);
 	}
 }
