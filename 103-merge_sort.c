@@ -28,7 +28,14 @@ void merge_sort(int *array, size_t size)
 	free(new_array);
 }
 
-
+/**
+ * merge_sort_recursion - a function that recursively breaks an array in two
+ * until each sub-array is a single element.
+ * @array: the array to breakdown.
+ * @low: the lower bound.
+ * @high: the upper bound.
+ * @temp: another array (dynamically allocated) to hold sorted result.
+ */
 void merge_sort_recursion(int *array, size_t low, size_t high, int *temp)
 {
 	size_t mid;
@@ -43,6 +50,14 @@ void merge_sort_recursion(int *array, size_t low, size_t high, int *temp)
 	}
 }
 
+/**
+ * merge - a function that merges two sub-arrays into a single sorted array.
+ * @array: the array to breakdown.
+ * @low: the lower bound.
+ * @mid: the center between low and high.
+ * @high: the upper bound.
+ * @temp: another array (dynamically allocated) to hold sorted result.
+ */
 void merge(int *array, size_t low, size_t mid, size_t high, int *temp)
 {
 	size_t i, j, k;
