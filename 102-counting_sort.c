@@ -25,7 +25,7 @@ void counting_sort(int *array, size_t size)
 	for (i = 0; i < count_size; ++i)
 		count[i] = 0;
 	/* get the frequency of the elements in array */
-	for (i = 0; i < size; ++i)
+	for (i = 0; i < count_size; ++i)
 		count[array[i]] += 1;
 
 	/* turn count to track the index */
