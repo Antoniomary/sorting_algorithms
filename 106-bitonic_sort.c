@@ -43,18 +43,19 @@ void swap(int *a, int *b)
 void bitonic_seq(int *ar, size_t size, size_t low, size_t count, int ord)
 {
 	size_t k;
+	char *direction = ord ? "UP" : "DOWN";
 
 	if (count > 1)
 	{
 		k = count / 2;
 
-		printf("Merging [%lu/%lu] (%s):\n", count, size, ord ? "UP" : "DOWN");
-		print_array(ar, count);
+		printf("Merging [%lu/%lu] (%s):\n", count, size, direction);
+		print_array(ar + low, count);
 		bitonic_seq(ar, size, low, k, ASCENDING);
 		bitonic_seq(ar, size, low + k, k, DESCENDING);
 		bitonic_merge(ar, size, low, count, ord);
-		printf("Result [%lu/%lu] (%s):\n", count, size, ord ? "UP" : "DOWN");
-		print_array(ar, count);
+		printf("Result [%lu/%lu] (%s):\n", count, size, direction);
+		print_array(ar + low, count);
 	}
 }
 
