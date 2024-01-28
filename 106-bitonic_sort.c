@@ -76,7 +76,9 @@ void bitonic_merge(int *ar, size_t size, size_t low, size_t count, int ord)
 
 		for (i = low; i < low + k; ++i)
 		{
-			if (ord == (ar[i] > ar[i + k]))
+			if (ord == ASCENDING && (ar[i] > ar[i + k]))
+				swap(&ar[i], &ar[i + k]);
+			else if (ord == DESCENDING && (ar[i] < ar[i + k]))
 				swap(&ar[i], &ar[i + k]);
 		}
 
